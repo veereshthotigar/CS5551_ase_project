@@ -1,0 +1,96 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reports</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+          <div>
+              <div style="display: block">
+                <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+        </ion-card-content>
+        <ion-row>
+            <ion-col >
+              <ion-item>
+                <button ion-button icon-start clear small (click)="loadByEvents()">
+                  <div>Event name</div>
+                </button>
+              </ion-item>
+            </ion-col>
+            <ion-col  >
+                <ion-item style="width:100%; float: right">
+                  <button  ion-button icon-start clear small end (click)="loadByPlace()">
+                    <div>Place</div>
+                  </button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <div>
+            <div style="display: block">
+              <canvas baseChart
+                      [datasets]="doughnutChartData"
+                      [labels]="doughnutChartLabels"
+                      [chartType]="doughnutChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+      </ion-card-content>
+      <ion-row>
+          <ion-col *ngFor="let place of distinct">
+            <ion-item>
+              <button ion-button icon-start clear small (click)="loadByNutPlace(place)">
+                <div>{{place}}</div>
+              </button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  </ion-card>
+    <ion-card>
+        <ion-card-content>
+          <div>
+              <div style="display: block">
+                <canvas baseChart
+                        [datasets]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [chartType]="pieChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+        </ion-card-content>
+        <ion-row>
+            <ion-col >
+              <ion-item>
+                <button ion-button icon-start clear small (click)="loadByName()">
+                  <div>Drug name</div>
+                </button>
+              </ion-item>
+            </ion-col>
+            <ion-col  >
+                <ion-item style="width:100%; float: right">
+                  <button  ion-button icon-start clear small end (click)="loadByClass()">
+                    <div>Drug class</div>
+                  </button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+    </ion-card>
+    
+</ion-content>
